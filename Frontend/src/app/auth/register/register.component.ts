@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { DbServicesService } from "./../db-services.service";
-import { uniqueUsernameValidator } from "./../shared/unique-username-validator.directive";
+import { DbServicesService } from "../../services/db-services.service";
+import { uniqueUsernameValidator } from "../../shared/unique-username-validator.directive";
 
 @Component({
   selector: "app-register",

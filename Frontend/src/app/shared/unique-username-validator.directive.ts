@@ -1,9 +1,9 @@
 import { Directive } from '@angular/core';
 import { AsyncValidator, AbstractControl, ValidationErrors, NG_ASYNC_VALIDATORS, AsyncValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DbServicesService } from './../db-services.service';
+import { DbServicesService } from '../services/db-services.service';
 import { map } from 'rxjs/operators';
-import { user } from './../Models/user';
+import { user } from '../models/user';
 // import { uniqueUsernameValidator } from './unique-username-validator.directive';
 
 export function uniqueUsernameValidator( userService: DbServicesService): AsyncValidatorFn{

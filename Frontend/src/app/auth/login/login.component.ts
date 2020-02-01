@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
-import { DbServicesService } from "./../db-services.service";
+import { DbServicesService } from "../../services/db-services.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { AfterViewInit, ViewChild, Renderer2 } from "@angular/core";
-import { user } from "./../Models/user";
+import { user } from "../../models/user";
 
 @Component({
   selector: "app-login",

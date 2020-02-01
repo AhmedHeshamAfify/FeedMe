@@ -1,32 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { UniqueUsernameValidatorDirective } from './shared/unique-username-validator.directive';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import {FormsModule } from '@angular/forms';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { RouterModule } from '@angular/router';
+import { Interceptor } from './interceptors/Interceptor';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    UniqueUsernameValidatorDirective
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([{path : '' ,
+    loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)}]),
     FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ShowHidePasswordModule
+    HttpClientModule
   ],
+
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: Interceptor,
+  //   multi: true
+  // }, AuthGuard, AuthService
+
   providers: [],
   bootstrap: [AppComponent]
 })
