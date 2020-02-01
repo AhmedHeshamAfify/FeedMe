@@ -1,12 +1,7 @@
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://127.0.0.1:27017/?ServiceName=mongodb";
+const mongoose = require('mongoose');
 
-const client = new MongoClient(url,{ useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://root:123@cluster0-gxapi.mongodb.net/feedMe?retryWrites=true&w=majority')
+    .then(() => console.log('DB connected'))
+    .catch(() => console.log('DB connection failed'))
 
-client.connect(function(err, db) {
-      if (err) throw err;
-      console.log("Database created!");
-});
-
-
-module.exports = client;
+module.exports = mongoose    
