@@ -1,0 +1,32 @@
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/download.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="angForm" novalidate (submit)="login()">
+      <input type="text" id="login" class="fadeIn second"  placeholder="login"  formControlName="email">
+      <div *ngIf="submitted && angForm.controls['email'].errors?.required">email is required.</div>
+
+      <input type="text" id="password" class="fadeIn third"  placeholder="password"  formControlName="password">
+      <div *ngIf="submitted && angForm.controls['password'].errors?.required">Password is required</div>
+
+
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <span style="color: red;">{{msg}}</span>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+
+  </div>
+</div>
