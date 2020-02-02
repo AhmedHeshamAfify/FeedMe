@@ -17,8 +17,9 @@ import { Interceptor } from './interceptors/Interceptor';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{path : '' ,
-    loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)}]),
+    RouterModule.forRoot([{path : '' , loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)},
+    {path : '' ,loadChildren : () => import('./home/home.module').then(m => m.HomeModule)}
+  ]),
     FormsModule,
     HttpClientModule
   ],

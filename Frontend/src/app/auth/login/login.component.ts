@@ -51,12 +51,13 @@ export class LoginComponent implements OnInit {
       if (data != null) {
         localStorage.setItem("token", data.token);
 
-        this.router.navigate(["/register"]);
+        this.router.navigate(["home"]);
       } else {
-        let lblMessage = document.getElementById("lblMssage");
-        lblMessage.style.display = "block";
-        this.msg = "something  went wrong";
+        // let lblMessage = document.getElementById("lblMssage");
+        // lblMessage.style.display = "block";
+         this.msg = "something  went wrong";
         // this.label.style.display='block';
+        this.router.navigate(["home"]);
       }
     });
   }
