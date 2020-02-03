@@ -4,7 +4,7 @@ const User = require('../models/Users')
 
 function generateJWT(email) {
     const token = jwt.sign({ _email: email }
-        , process.env.SECRET_KEY)
+        , process.env.SECRETE_KEY)
     return token;
 }
 

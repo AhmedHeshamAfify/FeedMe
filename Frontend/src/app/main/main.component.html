@@ -1,5 +1,4 @@
-   <!-- Header Area Starts -->
-   <header class="header-area header-area2">
+<div class="header-area header-area2">
     <div class="container">
         <div class="row">
             <div class="col-lg-2">
@@ -25,45 +24,9 @@
             </div>
         </div>
     </div>
-</header>
-<section class="banner-area banner-area2 menu-bg text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1><i>Our Resturants</i></h1>
-                <p class="pt-2"><i>Choose from a list of resturants surrounding you</i></p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="food-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="section-top">
-                    <h3><span class="style-change">Resturants</span> <br>List</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row" >
-            <div *ngFor="let resturant of resturants" class="col-md-4 col-sm-6" >
-                <div (click)="navigate(1)"  class="single-food">
-                    <div class="food-img">
-                        <img src="assets/images/food1.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="food-content">
-                        <div class="d-flex justify-content-between">
-                            <h5>{{resturant.name}}</h5>
-                        </div>
-                        <p class="pt-3">{{resturant.description}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Food Area End -->
-<footer class="footer-area">
+</div>
+<router-outlet></router-outlet>
+<div class="footer-area">
     <div class="footer-widget p-3 text-primary">
         <div class="container">
             <div class="row">
@@ -115,4 +78,7 @@
             </div>
         </div>
     </div>
-  </footer>
+</div>
+<!-- Footer Area Starts -->
+
+

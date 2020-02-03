@@ -13,7 +13,8 @@ async function filterRestsByCuisine(cuisine) {
     return rests;
 }
 async function filterRestsByLocation(location) {
-    const rests = await Rest.find({ location: { $near: location } }).limit(10);
+    console.log(location)
+    const rests = await Rest.find({ location: { '$near': location } }).limit(10);
     return rests;
 }
 async function filterRestsByRate() {
