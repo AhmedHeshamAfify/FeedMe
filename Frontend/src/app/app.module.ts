@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RouterModule } from '@angular/router';
 import { Interceptor } from './interceptors/Interceptor';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -16,6 +18,10 @@ import { Interceptor } from './interceptors/Interceptor';
     AppComponent
   ],
   imports: [
+
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([{path : '' , loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)},
