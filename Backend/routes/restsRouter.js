@@ -1,7 +1,11 @@
 const express = require('express');
 const restsController = require('../controllers/restsController')
+const authMiddleware = require('../middlewares/AuthMiddleware')
 
 const router = express.Router();
+
+router.use(authMiddleware.auth);
+
 
 router.get('/', restsController.getAllRestsController);
 router.get('/toprated', restsController.getRestsByRateContrller)

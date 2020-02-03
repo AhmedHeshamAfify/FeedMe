@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router} from '@angular/router';
-import { User } from '../Models/user';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-payment-card',

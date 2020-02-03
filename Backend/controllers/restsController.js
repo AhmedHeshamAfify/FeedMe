@@ -2,6 +2,7 @@ const restsService = require('../services/restsService');
 
 
 const getAllRestsController = async (req, res, next) => {
+    console.log("//////restsController")
     const rests = await restsService.getAllRest()
     res.send(rests)
 }
@@ -20,8 +21,8 @@ const getRestsByRateContrller = async (req, res, next) => {
     res.send(rests)
 }
 const getRestsByLocationContrller = async (req, res, next) => {
-    console.log("//////location")
-    const rests = await restsService.filterRestsByLocation(req.body.location)
+    console.log("//////locationController")
+    const rests = await restsService.filterRestsByLocation(req.body)
     res.send(rests)
 }
 
