@@ -9,6 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UniqueUsernameValidatorDirective } from './shared/unique-username-validator.directive';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { PaymentCardComponent } from './payment-card/payment-card.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    UniqueUsernameValidatorDirective
+    UniqueUsernameValidatorDirective,
+    PaymentCardComponent
 
   ],
   imports: [

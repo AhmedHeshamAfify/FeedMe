@@ -3,7 +3,7 @@ import { DbServicesService } from "./../db-services.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { AfterViewInit, ViewChild, Renderer2 } from "@angular/core";
-import { user } from "./../Models/user";
+import { User } from "../Models/User";
 
 @Component({
   selector: "app-login",
