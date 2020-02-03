@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestsComponent } from './rests/rests.component';
 import { RestdetailsComponent } from './restdetails/restdetails.component';
+import { RestsComponent } from './rests/rests.component';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -10,9 +12,12 @@ import { RouterModule } from '@angular/router';
   declarations: [RestsComponent, RestdetailsComponent],
   imports: [
     CommonModule,
+    RouterModule,
+
     RouterModule.forChild([
-      { path: '', component: RestsComponent },
-      { path: ':uuid', component: RestdetailsComponent }
+      { path: '', component: RestdetailsComponent },
+      { path: ':uuid', component: RestsComponent }
+
     ])
   ]
 })
