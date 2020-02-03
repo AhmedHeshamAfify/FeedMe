@@ -12,7 +12,7 @@ import { UniqueUsernameValidatorDirective } from '../shared/unique-username-vali
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     FormsModule,
     //ShowHidePasswordModule,
     //UniqueUsernameValidatorDirective,

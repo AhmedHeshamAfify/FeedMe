@@ -3,14 +3,14 @@ import { AsyncValidator, AbstractControl, ValidationErrors, NG_ASYNC_VALIDATORS,
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { map } from 'rxjs/operators';
-import { user } from '../models/user';
+import { User } from '../models/user';
 // import { uniqueUsernameValidator } from './unique-username-validator.directive';
 
 export function uniqueUsernameValidator( authService: AuthService): AsyncValidatorFn{
   return (c: AbstractControl): Promise<ValidationErrors| null> | Observable<ValidationErrors|null> =>{
     return authService.getUserByUsername(c.value).pipe(
       map(users => {
-          return users && user.length > 0 ? { 'uniqueUsername':true} : null;
+          return users && User.length > 0 ? { 'uniqueUsername':true} : null;
       })
 
     );

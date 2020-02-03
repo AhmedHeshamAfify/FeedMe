@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders , HttpParams } from '@angular/common/http';
-import { user } from '../models/user';
+import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
 
@@ -50,7 +50,7 @@ export class AuthService {
 
 
     getUserByUsername(uName: string){
-      return this.http.get<user[]>('http://localhost:8080/User/', {
+      return this.http.get<User[]>('http://localhost:8080/User/', {
         params: new HttpParams().set('userName', uName)
       })
   }

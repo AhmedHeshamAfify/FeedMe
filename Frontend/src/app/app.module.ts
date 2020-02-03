@@ -7,9 +7,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RouterModule } from '@angular/router';
 import { Interceptor } from './interceptors/Interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './main/home/home.component';
-import { MainComponent } from './main/main.component';
-import { RestdetailsComponent } from './main/restaurantDetails/restdetails.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -18,12 +16,15 @@ import { RestdetailsComponent } from './main/restaurantDetails/restdetails.compo
     AppComponent  
   ],
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
   
     RouterModule.forRoot([
-      { path: '', loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule) },
       { path: '', loadChildren: () => import('./main/main.module').then(r => r.MainModule) , canActivate : [AuthGuard]},
+      { path: '', loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule) },
       { path: '**', redirectTo: 'home' }]
     )],
 
