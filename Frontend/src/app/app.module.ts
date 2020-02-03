@@ -1,34 +1,40 @@
+import { RestdetailsComponent } from './rest/restdetails/restdetails.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { UniqueUsernameValidatorDirective } from './shared/unique-username-validator.directive';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { PaymentCardComponent } from './payment-card/payment-card.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { RouterModule } from '@angular/router';
+import { Interceptor } from './interceptors/Interceptor';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    UniqueUsernameValidatorDirective,
-    PaymentCardComponent
-
+    AppComponent
   ],
   imports: [
-    BrowserModule,
+
+    CommonModule,
     FormsModule,
-    AppRoutingModule,
     ReactiveFormsModule,
+    BrowserModule,
     HttpClientModule,
-    ShowHidePasswordModule
-  ],
+    RouterModule.forRoot([{path : '' , loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)},
+    {path : '' ,loadChildren : () => import('./home/home.module').then(m => m.HomeModule)},
+    { path: 'rests', loadChildren: () => import('./rest/rest.module').then(module => module.RestModule) }
+  ])],
+
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: Interceptor,
+  //   multi: true
+  // }, AuthGuard, AuthService
+
   providers: [],
   bootstrap: [AppComponent]
 })

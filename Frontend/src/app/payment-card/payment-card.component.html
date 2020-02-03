@@ -22,10 +22,9 @@
     <title>Checkout example for Bootstrap</title>
   </head>
   <!-- <body class="bg-light"> -->
-  <form
+  <form [formGroup]="angForm"
     class="card p-2"
     class="needs-validation"
-    [formGroup]="angForm"
     novalidate
     (submit)="Pay()"
   >
