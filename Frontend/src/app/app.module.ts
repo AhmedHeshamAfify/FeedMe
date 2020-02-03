@@ -17,8 +17,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'rests', loadChildren: () => import('./rest/rest.module').then(m => m.RestModule) },
-      { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }
-      //  { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+      { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+      { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
 
       // { path: 'rests/:uuid', component: RestdetailsComponent },
       //{ path: 'rests', component: RestdetailsComponent },
