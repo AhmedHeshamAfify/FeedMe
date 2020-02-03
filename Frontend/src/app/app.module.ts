@@ -1,37 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { Interceptor } from './interceptors/Interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
   ],
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
+
     RouterModule.forRoot([
-      { path: 'rests', loadChildren: () => import('./rest/rest.module').then(m => m.RestModule) },
-      { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-      { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
+      { path: '', loadChildren: () => import('./main/main.module').then(r => r.MainModule), canActivate: [AuthGuard] },
+      { path: '', loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule) },
+      { path: '**', redirectTo: 'home' }]
+    )],
 
-      // { path: 'rests/:uuid', component: RestdetailsComponent },
-      //{ path: 'rests', component: RestdetailsComponent },
-      // { path: 'rests/:uuid', component: RestdetailsComponent }
-    ])],
-
-  // {
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass: Interceptor,
-  //   multi: true
-  // }, AuthGuard, AuthService
-
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: Interceptor,
+    multi: true
+  }, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

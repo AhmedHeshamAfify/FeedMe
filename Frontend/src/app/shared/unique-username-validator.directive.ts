@@ -1,16 +1,16 @@
 import { Directive } from '@angular/core';
 import { AsyncValidator, AbstractControl, ValidationErrors, NG_ASYNC_VALIDATORS, AsyncValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DbServicesService } from '../services/db-services.service';
+import { AuthService } from '../services/auth.service';
 import { map } from 'rxjs/operators';
-import { user } from '../models/user';
+import { User } from '../models/user';
 // import { uniqueUsernameValidator } from './unique-username-validator.directive';
 
-export function uniqueUsernameValidator( userService: DbServicesService): AsyncValidatorFn{
+export function uniqueUsernameValidator( authService: AuthService): AsyncValidatorFn{
   return (c: AbstractControl): Promise<ValidationErrors| null> | Observable<ValidationErrors|null> =>{
-    return userService.getUserByUsername(c.value).pipe(
+    return authService.getUserByUsername(c.value).pipe(
       map(users => {
-          return users && user.length > 0 ? { 'uniqueUsername':true} : null;
+          return users && User.length > 0 ? { 'uniqueUsername':true} : null;
       })
 
     );
@@ -26,7 +26,7 @@ export function uniqueUsernameValidator( userService: DbServicesService): AsyncV
 })
 export class UniqueUsernameValidatorDirective  implements AsyncValidator{
 
-  constructor( private userService: DbServicesService) { }
+  constructor( private authService: AuthService) { }
 
   validate(c: AbstractControl): Promise<ValidationErrors| null> | Observable<ValidationErrors|null>{
       // return this.userService.getUserByUsername(c.value).pipe(
@@ -35,6 +35,6 @@ export class UniqueUsernameValidatorDirective  implements AsyncValidator{
       //   })
 
       // );
-      return uniqueUsernameValidator(this.userService)(c)
+      return uniqueUsernameValidator(this.authService)(c)
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
-import { DbServicesService } from "../../services/db-services.service";
+import { AuthService } from "../../services/auth.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { AfterViewInit, ViewChild, Renderer2 } from "@angular/core";
-import { user } from "../../models/user";
+import { User } from "../../models/user";
 
 @Component({
   selector: "app-login",
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service: DbServicesService,
+    private service: AuthService,
     private router: Router,
     private rd: Renderer2
   ) {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       password: this.angForm.value.password
     };
     this.service.LoginUser(user).subscribe(data => {
-      console.log(">>> login response: ", data);
+      console.log(">>> login response: ", data.token);
       if (data != null) {
         localStorage.setItem("token", data.token);
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         // lblMessage.style.display = "block";
          this.msg = "something  went wrong";
         // this.label.style.display='block';
-        this.router.navigate(["home"]);
+        this.router.navigate(["login"]);
       }
     });
   }

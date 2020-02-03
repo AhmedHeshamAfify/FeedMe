@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { DbServicesService } from "../../services/db-services.service";
+import { AuthService } from "../../services/auth.service";
 import { uniqueUsernameValidator } from "../../shared/unique-username-validator.directive";
 
 @Component({
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   angForm: FormGroup;
   submitted = false;
   // @Input() user = {username:'' , email:'' , password: ''};
-  constructor(private fb: FormBuilder, private service: DbServicesService) {
+  constructor(private fb: FormBuilder, private service: AuthService) {
     this.createForm();
   }
 
