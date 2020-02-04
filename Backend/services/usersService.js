@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/Users')
 
-function generateJWT(email) {
-    const token = jwt.sign({ email: email }
+function generateJWT(user) {
+    const token = jwt.sign({ email: user.email }
         , process.env.SECRETE_KEY)
-    return token;
+    const loginData = { user: user, token: token }
+    return loginData;
 }
 
 function signUp(userName, email, password) {
@@ -22,7 +23,7 @@ async function signIn(email, password) {
     }
     else {
         const hash = user.password
-        if (bcrypt.compareSync(password, hash)) return generateJWT(email);
+        if (bcrypt.compareSync(password, hash)) return generateJWT(user);
         else return false
     }
 

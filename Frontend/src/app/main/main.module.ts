@@ -7,11 +7,12 @@ import { RestdetailsComponent } from './restaurantDetails/restdetails.component'
 import { PaymentCardComponent } from '../payment-card/payment-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
+import { PaymentConfirmationComponent } from './../payment-confirmation/payment-confirmation.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, RestdetailsComponent,PaymentCardComponent, CartComponent],
+  declarations: [MainComponent, HomeComponent, RestdetailsComponent, PaymentCardComponent, PaymentConfirmationComponent, CartComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -20,12 +21,12 @@ import { CartComponent } from './cart/cart.component';
       {
         path: '', component: MainComponent,
         children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'rest', component: RestdetailsComponent },
-        { path: 'orders', component: CartComponent },
-        { path: 'payment', component: PaymentCardComponent }
-        
-      ]
+          { path: 'home', component: HomeComponent },
+          { path: 'rest', component: RestdetailsComponent },
+          { path: 'cart', component: CartComponent },
+          { path: 'payment', component: PaymentCardComponent },
+          { path: 'confirmed', component: PaymentConfirmationComponent }
+        ]
       }])
   ]
 })
