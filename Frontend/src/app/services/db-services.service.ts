@@ -22,9 +22,15 @@ export class DbServicesService {
   //   'userName':''
   // };
 
-  // httpOptions1 = {
-  //   headers: new HttpHeaders(this.headerObject)
-  // };
+  // token=localStorage.getItem('token')
+  // console.log(token);
+
+  // httpOptions2 = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type':'application/json'
+  //   })
+
+  // }; // };
 
 
 
@@ -43,6 +49,14 @@ export class DbServicesService {
 
 
     }
+
+
+    savePayment(payment) : Observable<any> {
+
+        return this.http.post('http://localhost:4000/payment', payment, this.httpOptions );
+    }
+
+
 
 
     getUserByUsername(uName: string){
