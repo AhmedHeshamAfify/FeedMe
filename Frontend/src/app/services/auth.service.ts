@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JwtHelper } from 'angular2-jwt';
-import { HttpClient, HttpHeaders , HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 
@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  user: User
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json'
     })
 
   };
@@ -29,33 +29,33 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) { }
-  
-  jwtHelper : JwtHelper = new JwtHelper()
-  
-  RegisterUser(user) : Observable<any> {
+
+  jwtHelper: JwtHelper = new JwtHelper()
+
+  RegisterUser(user): Observable<any> {
     console.log(user);
     // debugger;
-      return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions );
+    return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions);
   }
 
 
-  authUser(){
+  authUser() {
     const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    if (token) {
+      return !this.jwtHelper.isTokenExpired(token);
+    }
+    return false
   }
 
-  LoginUser (user) : Observable<any> {
-
+  LoginUser(user): Observable<any> {
     return this.http.post('http://localhost:4000/Users/signIn', user);
+  }
 
 
-    }
-
-
-    getUserByUsername(uName: string){
-      return this.http.get<User[]>('http://localhost:8080/User/', {
-        params: new HttpParams().set('userName', uName)
-      })
+  getUserByUsername(uName: string) {
+    return this.http.get<User[]>('http://localhost:8080/User/', {
+      params: new HttpParams().set('userName', uName)
+    })
   }
 
 }

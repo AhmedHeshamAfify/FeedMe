@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Data } from '@angular/router';
+import { Router } from '@angular/router';
 import { RestaurantService } from '../../services/restaurantService';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { Restaurant } from 'src/app/models/restaurant';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  restaurants : Observable<any>;
+  restaurants : Observable<Restaurant>;
   constructor(private router: Router, private restaurantService: RestaurantService) { }
 
   ngOnInit() {
