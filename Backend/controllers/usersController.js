@@ -9,9 +9,9 @@ const userSignUpController = (req, res, next) => {
 const userSignInController = async (req, res, next) => {
 
     const user = req.body;
-    const token = await usersService.signIn(user.email, user.password);
-    if (token != false) {
-        res.status(200).send({ token: token });
+    const userData = await usersService.signIn(user.email, user.password);
+    if (userData != false) {
+        res.status(200).send({ token: userData.token, user: userData.user });
     }
     else res.status(405).send("Access Not Allowed")
 }

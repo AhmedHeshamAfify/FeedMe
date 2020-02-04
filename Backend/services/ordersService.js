@@ -20,8 +20,8 @@ async function saveOrder(email, meals) {
         const myUser = await User.findOneAndUpdate({ email: email }, { $push: { "orders": order } })
 
 
-        const myUser22 = await User.findOne({ email: email });
-        return myUser22;
+        return myUser;
+
     } catch (error) {
         console.log("service error", error)
     }
