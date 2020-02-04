@@ -15,9 +15,9 @@ import { RestdetailsComponent } from './restaurantDetails/restdetails.component'
       {
         path: '', component: MainComponent,
         children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'rest', component: RestdetailsComponent }
-      ]
+          { path: 'home', component: HomeComponent },
+          { path: 'rest', component: RestdetailsComponent }
+        ]
       }])
   ]
 })

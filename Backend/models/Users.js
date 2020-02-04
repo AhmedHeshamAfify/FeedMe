@@ -4,7 +4,8 @@ const mongoose = require('../configurations/dbConfig');
 const userSchema = new mongoose.Schema({
     userName: String,
     email: String,
-    password: String
+    password: String,
+
 });
 
 const User = mongoose.model("user", userSchema);

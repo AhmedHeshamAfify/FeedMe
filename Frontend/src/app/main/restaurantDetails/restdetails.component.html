@@ -22,10 +22,11 @@
         </div>
 
         <div class="row">
+
             <div *ngFor="let meal of meals" class="col-md-4 col-sm-6">
                 <div (click)="navigate(1)" class="single-food">
                     <div class="food-img">
-                        <img src="assets/images/food4.jpg" class="img-fluid" alt="">
+                        <img src="assets/images/food3.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="food-content">
                         <div class="d-flex justify-content-between">
@@ -33,8 +34,8 @@
                         </div>
                         <p class="pt-4">Category: {{meal.type}}</p>
                         <p class="pt-8">Price: {{meal.price}}</p>
-
                     </div>
+
                 </div>
             </div>
         </div>

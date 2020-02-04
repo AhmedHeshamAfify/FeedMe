@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -26,7 +27,9 @@ import { AuthService } from './services/auth.service';
       { path: '', loadChildren: () => import('./main/main.module').then(r => r.MainModule), canActivate: [AuthGuard] },
       { path: '', loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule) },
       { path: '**', redirectTo: 'home' }]
-    )],
+    ),
+
+    BrowserAnimationsModule],
 
   providers: [{
     provide: HTTP_INTERCEPTORS,

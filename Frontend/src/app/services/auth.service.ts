@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders , HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
@@ -12,7 +12,7 @@ export class AuthService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json'
     })
 
   };
@@ -30,29 +30,36 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  RegisterUser(user) : Observable<any> {
+  RegisterUser(user): Observable<any> {
     console.log(user);
     // debugger;
-      return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions );
+    return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions);
   }
 
 
-  authUser(){
+  authUser() {
     return localStorage.getItem('token');
   }
 
-  LoginUser (user) : Observable<any> {
+  LoginUser(user): Observable<any> {
 
     return this.http.post('http://localhost:4000/Users/signIn', user);
 
 
-    }
+  }
+  checkEmail(emailObject): Observable<any> {
 
 
-    getUserByUsername(uName: string){
-      return this.http.get<User[]>('http://localhost:8080/User/', {
-        params: new HttpParams().set('userName', uName)
-      })
+    return this.http.post('http://localhost:4000/Users/checkemail', emailObject);
+
+  }
+
+
+
+  getUserByUsername(uName: string) {
+    return this.http.get<User[]>('http://localhost:8080/User/', {
+      params: new HttpParams().set('userName', uName)
+    })
   }
 
 }
