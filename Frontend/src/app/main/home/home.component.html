@@ -2,7 +2,7 @@
 <section class="banner-area banner-area2 menu-bg text-center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class=" col-lg-12">
                 <h1><i>Our Resturants</i></h1>
                 <p class="pt-2"><i>Choose from a list of resturants surrounding you</i></p>
             </div>
@@ -15,12 +15,15 @@
             <div class="col-md-5">
                 <div class="section-top">
                     <h3 class="style-change">Resturants List</h3>
+                    <h5>Search For Restaurant : </h5><input type="text" (keyup)="sendit($event.target.value)" />
+                    
                 </div>
+                
             </div>
         </div>
         <div class="row" >
             <div *ngFor="let restaurant of (restaurants | async)" class="col-md-4 col-sm-6" >
-                <div (click)="navigate(1)"  class="single-food">
+                <div (click)="navigate(restaurant)"  class="single-food">
                     <div class="food-img">
                         <img src="assets/images/food1.jpg" class="img-fluid" alt="">
                     </div>

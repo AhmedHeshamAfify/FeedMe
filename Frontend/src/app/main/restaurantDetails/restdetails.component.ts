@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart, Data } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Restaurant } from 'src/app/models/restaurant';
+import { RestaurantService } from 'src/app/services/restaurantService';
 
 
 @Component({
@@ -10,7 +14,7 @@ import { Router } from '@angular/router';
 export class RestdetailsComponent implements OnInit {
   restDetails = {
     name: "McDonald's",
-    desc: "Rest1 Desc",
+    desc: "Rest 1 Desc",
     cuisine: "Americain",
     meals: [{ name: "meal1", type: "beef", price: "10 $" }, { name: "meal2", type: "vegan", price: "11$" }, { name: "meal3", type: "vegetarian", price: "12$" }
       , { name: "meal4", type: "beef", price: "15$" }, { name: "meal5", type: "beef", price: "10$" }],
@@ -18,13 +22,18 @@ export class RestdetailsComponent implements OnInit {
     phone: "641-334-8722",
     image: "1"
   }
-  meals = this.restDetails.meals;
-  constructor(private router: Router) { }
-
+  constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestaurantService) { }
+  mealsGroupedByType;
+  restaurant
   ngOnInit() {
+    this.restaurant = history.state.data
+    if (!this.restaurant) {
+      this.mealsGroupedByType = this.restaurantService.
+        getAllSelectedRestaurantMealsGroupedByType(this.restaurant)
+    }
+
   }
-  navigate(id) {
-    this.router.navigate([""]);
-  }
+
+
 
 }
