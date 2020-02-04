@@ -1,27 +1,27 @@
 <!-- Header Area Starts -->
-<header class="header-area header-area2">
+<div class="header-area header-area2">
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
-        
       </div>
       <div class="col-lg-6">
         <div id="formContent">
           <!-- Tabs Titles -->
           <!-- Icon -->
-             <span class="glyphicon glyphicon-list-alt"></span>
-            <h2 class="afify">Feed Me</h2>
+          <div class="fadeIn first container"><img src="assets/images/logo/logo2.png" alt="logo"></div>
+
 
           <!-- Login Form -->
           <form [formGroup]="angForm" novalidate (submit)="login()">
             <input type="text" id="login" class="fadeIn second" placeholder="login" formControlName="email">
-            <div *ngIf="submitted && angForm.controls['email'].errors?.required">email is required.</div>
+            <div *ngIf="submitted && angForm.controls['email'].errors?.required"><label class="validation"> email is required. </label>
+            </div>
 
             <input type="text" id="password" class="fadeIn third" placeholder="password" formControlName="password">
-            <div *ngIf="submitted && angForm.controls['password'].errors?.required">Password is required</div>
+            <div *ngIf="submitted && angForm.controls['password'].errors?.required"> <label class="validation"> Password is required. </label></div>
 
 
-            <input type="submit" class="fadeIn fourth" value="Log In">
+            <input type="submit" class="fadeIn fourth"  value="Log In">
           </form>
 
           <span style="color: red;">{{msg}}</span>
@@ -34,6 +34,6 @@
       </div>
     </div>
   </div>
-</header>
-<section class="banner-area text-center">
-</section>
+</div>
+<div class="banner-area text-center">
+</div>

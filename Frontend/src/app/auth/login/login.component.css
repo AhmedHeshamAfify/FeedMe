@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  height: 150vh;
 }
 
 a {
@@ -20,7 +20,7 @@ a {
   font-weight: 400;
 }
 
-h2.afify {
+h2.logo {
   text-align: center;
   font-size: 16px;
   font-weight: 600;
@@ -85,7 +85,8 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #35445a;
+  /* hena */
+  background-color:#027ebd;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -143,6 +144,9 @@ input[type=text]:placeholder {
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
+.validation{
+  color: red;
+}
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -220,6 +224,7 @@ input[type=text]:placeholder {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
+
 }
 
 /* Simple CSS3 Fade-in Animation */

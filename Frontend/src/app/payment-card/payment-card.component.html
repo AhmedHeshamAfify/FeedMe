@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
 
-    <!-- Custom styles for this template -->
-    <link href="../payment-card/payment-card.component.css rel=" stylesheet">
 
-    <title>Checkout example for Bootstrap</title>
-  </head>
+
+
+<section class="banner-area banner-area2 blog-bg text-center">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <h1><i>Order Payment</i></h1>
+          </div>
+      </div>
+  </div>
+</section>
+<section class="food-area section-padding">
+  <div class="container">
+
+
   <!-- <body class="bg-light"> -->
-  <form [formGroup]="angForm"
+    <form [formGroup]="angForm"
     class="card p-2"
     class="needs-validation"
     novalidate
     (submit)="Pay()"
   >
     <div class="container">
-      <div class="py-5 text-center">
-        <h2>Checkout Form</h2>
-      </div>
 
       <div class="row">
 
@@ -40,6 +32,7 @@
           <h4 class="mb-3">Delivery address</h4>
 
           <div class="mb-3">
+            <br>
             <label for="address">Address</label>
             <input
               type="text"
@@ -215,5 +208,12 @@
       <footer class="my-5 pt-5 text-muted text-center text-small"></footer>
     </div>
   </form>
-  <!-- </body> -->
-</html>
+
+
+
+
+
+
+  </div>
+</section>
+<!-- Food Area End -->
