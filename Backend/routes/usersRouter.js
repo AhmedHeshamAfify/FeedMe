@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post('/signUp', usersController.userSignUpController);
 router.post('/signIn', usersController.userSignInController);
+router.post('/checkemail', usersController.checkEmailController);
 
 
 

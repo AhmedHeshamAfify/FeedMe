@@ -37,5 +37,10 @@ async function saveUser(userName, email, password) {
     });
     const result = await user.save();
 }
+async function checkEmailExist(email) {
+    const result = await User.find({ "email": email })
+    if (result.length > 0) return true;
+    else return false;
+}
 
-module.exports = { signUp, signIn }
+module.exports = { signUp, signIn, checkEmailExist }

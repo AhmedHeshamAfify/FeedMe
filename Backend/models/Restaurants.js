@@ -8,7 +8,7 @@ const restSchema = new mongoose.Schema({
     address: String,
     location: [Number],
     cuisine: String,
-    meals: [String],
+    meals: [],
     rate: Number
 
 });
