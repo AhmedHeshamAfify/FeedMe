@@ -10,7 +10,7 @@ router.use(authMiddleware.auth);
 router.get('/', restsController.getAllRestsController);
 router.get('/toprated', restsController.getRestsByRateContrller)
 router.post('/nearest', restsController.getRestsByLocationContrller)
-router.get('/:id', restsController.getRestByIdContrller); // need debug
+router.get('/:id', restsController.getRestByIdContrller);
 router.get('/cuisine/:cuisine', restsController.getRestsByCuisineContrller);
 
 
