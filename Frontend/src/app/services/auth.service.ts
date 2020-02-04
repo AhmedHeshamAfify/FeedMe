@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  user : User
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json'
     })
 
   };
@@ -29,9 +29,9 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) { }
-  
+
   jwtHelper : JwtHelper = new JwtHelper()
-  
+
   RegisterUser(user) : Observable<any> {
     console.log(user);
     // debugger;

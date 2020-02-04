@@ -6,13 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { RestdetailsComponent } from './restaurantDetails/restdetails.component';
 import { PaymentCardComponent } from '../payment-card/payment-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentConfirmationComponent } from './../payment-confirmation/payment-confirmation.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, RestdetailsComponent,PaymentCardComponent],
+  declarations: [MainComponent, HomeComponent, RestdetailsComponent,PaymentCardComponent,PaymentConfirmationComponent],
   imports: [
-    FormsModule,
+  FormsModule,
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild([
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         children: [
         { path: 'home', component: HomeComponent },
         { path: 'rest', component: RestdetailsComponent },
-        { path: 'payment', component: PaymentCardComponent }
+        { path: 'payment', component: PaymentCardComponent },
+        { path: 'confirmed', component: PaymentConfirmationComponent }
       ]
       }])
   ]
