@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Data } from '@angular/router';
 import { RestaurantService } from '../../services/restaurantService';
+import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  restaurants;
+  restaurants : Observable<any>;
   constructor(private router: Router, private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.getAllRestaurantByPosition();
+  }
+  
+  sendit(data){
+    this.restaurants.pipe(filter(x=> x.name == data)).subscribe(console.log);
   }
 
   getAllRestaurantByPosition(){
@@ -24,8 +30,9 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  navigate() {
-    this.router.navigate(["register"]);
+  navigate(restaurant) {     
+    this.router.navigate(['rest'],{state :{ data : restaurant}});
+    
   }
 
 }
