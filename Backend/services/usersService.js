@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const User = require('../models/Users')
 
 function generateJWT(email) {
-    const token = jwt.sign({ _email: email }
+    const token = jwt.sign({ email: email }
         , process.env.SECRETE_KEY)
     return token;
 }
