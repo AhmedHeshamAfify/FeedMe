@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart, Data } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Restaurant } from 'src/app/models/restaurant';
 import { RestaurantService } from 'src/app/services/restaurantService';
 
 
@@ -32,6 +29,9 @@ export class RestdetailsComponent implements OnInit {
         getAllSelectedRestaurantMealsGroupedByType(this.restaurant)
     }
 
+  }
+  navigate(id) {
+    this.router.navigate([""]);
   }
 
 
