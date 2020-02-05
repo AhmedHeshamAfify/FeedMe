@@ -16,26 +16,26 @@
                 <div class="section-top">
                     <h3 class="style-change">Resturants List</h3>
                     <h5>Search For Restaurant : </h5><input type="text" (keyup)="sendit($event.target.value)" />
-                    
+
                 </div>
-                
+
             </div>
         </div>
-        <div class="row" >
-            <div *ngFor="let restaurant of (restaurants | async)" class="col-md-4 col-sm-6" >
-                <div (click)="navigate(restaurant)"  class="single-food">
-                    <div class="food-img">
-                        <img src="assets/images/food1.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="food-content">
-                        <div class="d-flex justify-content-between">
-                            <h5>{{restaurant.name}}</h5>
+            <div class="row">
+                <div *ngFor="let restaurant of (restaurants | async)" class="col-md-4 col-sm-6">
+                    <div (click)="navigate(restaurant)" class="single-food">
+                        <div class="food-img">
+                            <img src="assets/images/food1.jpg" class="img-fluid" alt="">
                         </div>
-                        <p class="pt-3">{{restaurant.description}}</p>
+                        <div class="food-content">
+                            <div class="d-flex justify-content-between">
+                                <h5>{{restaurant.name}}</h5>
+                            </div>
+                            <p class="pt-3">{{restaurant.description}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 <!-- Food Area End -->

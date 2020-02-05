@@ -50,15 +50,15 @@ export class LoginComponent implements OnInit {
       console.log(">>> login response: ", data.token);
       if (data != null) {
         localStorage.setItem("token", data.token);
-
-        this.router.navigate(["home"]);
-      } else {
-        // let lblMessage = document.getElementById("lblMssage");
-        // lblMessage.style.display = "block";
-         this.msg = "something  went wrong";
-        // this.label.style.display='block';
-        this.router.navigate(["login"]);
+        if (data.user) {
+          console.log(user)
+          this.service.user = data.user
+        }
       }
+    },
+    error => {
+      this.msg = "User not found";
     });
+    this.router.navigate(["home"]);
   }
 }
