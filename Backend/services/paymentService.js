@@ -1,16 +1,42 @@
 const User = require('../models/Users')
 
-function savePayment(orders,email) {
+function savePayment(order,email) {
 
-    // console.log(payment);
+
+    console.log('orders from backend',order);
+    console.log('emailfrom backend',email);
+
     
-    console.log(email);
+    const currentUser =  User.updateOne({email:email, orders : { } } , {$set : {"orders.$.address" : order.address}})
+
+//    const lastOrder=  User.aggregate([
+//         { 
+//           $match: { 
+//             'email': email
+//           }
+//         },
+//         { 
+//           $project: {
+//             orders: {
+//               $slice: [ "$orders", -1 ] 
+//             }
+//           }
+//         }
+//       ]);
+
+//       console.log(lastOrder);
+      
+
     
-    // const user = User.find({ email:email })
-    const user = User.findOneAndUpdate({email:email},{$push:{"orders":orders}})
+
+
+// lastOrder=orders
+
+    // const currentUser = User.findOneAndUpdate({email:email},{$push:{"orders":orders}})
+    // const user = User.findOneAndUpdate({email:email},{$push:{"orders":orders}})
     // const user2 = User.find({email:email});
-    
-    return user
+
+    return currentUser
 
 }
 

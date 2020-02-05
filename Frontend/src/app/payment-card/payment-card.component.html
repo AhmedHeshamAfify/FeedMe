@@ -21,6 +21,7 @@
     class="card p-2"
     class="needs-validation"
     novalidate
+
     (submit)="Pay()"
   >
     <div class="container">
@@ -199,7 +200,7 @@
             </div>
           </div>
           <hr class="mb-4" />
-          <button class="btn btn-primary btn-lg btn-block" type="submit" >
+          <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!angForm.valid" >
             Continue to checkout
           </button>
         </div>

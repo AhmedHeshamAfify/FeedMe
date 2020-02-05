@@ -36,7 +36,6 @@ export class PaymentCardComponent implements OnInit {
       Address2: ["", Validators.required],
       State: ["", Validators.required],
       City: ["", Validators.required],
-      Zip: ["", Validators.required],
       name: ["", Validators.required],
       creditCard: ["", Validators.required],
       Expiration: ["", Validators.required],
@@ -45,71 +44,77 @@ export class PaymentCardComponent implements OnInit {
   }
 
 
-Pay(){
-  this.submitted=true;
-  // let payment={
-  //   name:this.angForm.value.name,
-  //   creditCard:this.angForm.value.creditCard,
-  //   Expiration:this.angForm.value.Expiration,
-  //   cvv:this.angForm.value.cvv
-  // }
+  Pay() {
+    this.submitted = true;
+    // let payment={
+    //   name:this.angForm.value.name,
+    //   creditCard:this.angForm.value.creditCard,
+    //   Expiration:this.angForm.value.Expiration,
+    //   cvv:this.angForm.value.cvv
+    // }
 
-  let orders={
+    let orders = {
 
-    address:{
-      Address:this.angForm.value.Address,
-      Address2:this.angForm.value.Address2,
-      State:this.angForm.value.State,
-      City:this.angForm.value.City
-    },
+      address: {
+        Address: this.angForm.value.Address,
+        Address2: this.angForm.value.Address2,
+        State: this.angForm.value.State,
+        City: this.angForm.value.City
+      },
 
-    payment:{
-    name:this.angForm.value.name,
-    creditCard:this.angForm.value.creditCard,
-    Expiration:this.angForm.value.Expiration,
-    cvv:this.angForm.value.cvv
+      payment: {
+        name: this.angForm.value.name,
+        creditCard: this.angForm.value.creditCard,
+        Expiration: this.angForm.value.Expiration,
+        cvv: this.angForm.value.cvv
 
+      }
     }
-  }
 
-// console.log(payment);
 
 
     // this.user.payments=[payment]
-    this.user.orders=[orders]
+    this.user.orders = [orders]
     // this.user.orders.push(payment)
-  console.log(orders);
+    console.log(orders);
 
-  console.log(this.user);
-
-
-
-  this.service.savePayment(orders).subscribe(data=>{
-
-    console.log('hello');
-
-    if(data !=null){
-        console.log('the returned data is ',data);
-        this.authService.user=data;
-        // this.router.navigate(['/confirmed']);
+    console.log(this.user);
 
 
-      } else {
 
-    this.msg = 'something  went wrong';
-    console.log(this.msg);
+    const ob = this.service.savePayment(orders)
 
-      }
+    console.log('pppppppppppppppppppppppppppppppp',ob)
+    ob.subscribe(data => {
+
+      console.log('hello');
+
+
+      console.log('the returned data is ', data);
+      this.authService.user = data;
+      this.router.navigate(["confirmed"]);
+      this.msg = 'something  went wrong';
+
+      console.log(this.msg);
+
+
     });
 
 
 
 
 
-}
+  }
 
 
+// isValid(){
 
+// // if (this.angForm.validator) {
+//   this.router.navigate(["payment"]);
+
+// // }
+
+// }
 
 
 
