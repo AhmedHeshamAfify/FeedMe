@@ -6,25 +6,35 @@ import { HomeComponent } from './home/home.component';
 import { RestdetailsComponent } from './restaurantDetails/restdetails.component';
 import { PaymentCardComponent } from '../payment-card/payment-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
 import { PaymentConfirmationComponent } from './../payment-confirmation/payment-confirmation.component';
-
+import { PersistenceModule } from 'angular-persistence';
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, RestdetailsComponent,PaymentCardComponent,PaymentConfirmationComponent],
+  declarations: [
+    MainComponent,
+    HomeComponent,
+    RestdetailsComponent,
+    PaymentCardComponent,
+    PaymentConfirmationComponent,
+    CartComponent
+    
+  ],
   imports: [
-  FormsModule,
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild([
       {
         path: '', component: MainComponent,
         children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'rest', component: RestdetailsComponent },
-        { path: 'payment', component: PaymentCardComponent },
-        { path: 'confirmed', component: PaymentConfirmationComponent }
-      ]
+          { path: 'home', component: HomeComponent },
+          { path: 'rest', component: RestdetailsComponent },
+          { path: 'cart', component: CartComponent },
+          { path: 'payment', component: PaymentCardComponent },
+          { path: 'confirmed', component: PaymentConfirmationComponent }
+        ]
       }])
   ]
 })

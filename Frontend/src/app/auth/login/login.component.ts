@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { AfterViewInit, ViewChild, Renderer2 } from "@angular/core";
 import { User } from "../../models/user";
+import { PersistenceService } from 'angular-persistence';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: "app-login",
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private service: AuthService,
     private router: Router,
-    private rd: Renderer2
+    private rd: Renderer2,
+    private utilsService: UtilsService
   ) {
     this.createForm();
   }
@@ -50,15 +53,15 @@ export class LoginComponent implements OnInit {
       console.log(">>> login response: ", data.token);
       if (data != null) {
         localStorage.setItem("token", data.token);
-
-        this.router.navigate(["home"]);
-      } else {
-        // let lblMessage = document.getElementById("lblMssage");
-        // lblMessage.style.display = "block";
-         this.msg = "something  went wrong";
-        // this.label.style.display='block';
-        this.router.navigate(["login"]);
+        if (data.user) {
+          this.utilsService.insertInCach('user', data.user)
+          this.router.navigate(["home"]);
+        }
       }
+    },
+    error => {
+      this.msg = "User not found";
     });
+    
   }
 }

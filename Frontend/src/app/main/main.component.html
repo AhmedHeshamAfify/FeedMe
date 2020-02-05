@@ -1,5 +1,10 @@
 <div class="header-area header-area2">
     <div class="container">
+        <div *ngIf="user" class="d-flex justify-content-center">
+            <div>
+                <h4>Welcome : {{user?.email}}</h4>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-2">
                 <div class="logo-area">
@@ -11,14 +16,12 @@
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>  
+                </div>
                 <div class="main-menu main-menu2">
                     <ul>
-                        <li class="active"><a href="index.html">home</a></li>
-                        <li><a href="about.html">about</a></li>
-                        <li><a href="menu.html">menu</a></li>
-                        <li><a href="contact-us.html">contact</a></li>
-                        <li><a href="elements.html">Elements</a></li>
+                        <li><a  [routerLink]="['/home']">home</a></li>
+                        <li><a class="underlineHover" [routerLink]="['/cart']">Cart</a></li>
+                        <li><a class="underlineHover" [routerLink]="['']" (click)="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,14 +74,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-6">
-                    <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+                    <span>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Footer Area Starts -->
-
-
