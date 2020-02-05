@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart, Data } from '@angular/router';
 import { RestaurantService } from 'src/app/services/restaurantService';
+import { Restaurant } from 'src/app/models/restaurant';
+import { CartService } from 'src/app/services/cart.service';
+import { Meal } from 'src/app/models/meal';
 
 
 @Component({
@@ -9,7 +12,7 @@ import { RestaurantService } from 'src/app/services/restaurantService';
 
 })
 export class RestdetailsComponent implements OnInit {
-  restDetails = {
+  restDetails : Restaurant = {
     name: "McDonald's",
     desc: "Rest 1 Desc",
     cuisine: "Americain",
@@ -19,19 +22,23 @@ export class RestdetailsComponent implements OnInit {
     phone: "641-334-8722",
     image: "1"
   }
-  constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestaurantService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestaurantService, private cartService: CartService) { }
   mealsGroupedByType;
-  restaurant
+  restaurant: Restaurant
   ngOnInit() {
-    this.restaurant = history.state.data
-    if (!this.restaurant) {
+    this.restaurant = this.restDetails
+    console.log(this.restaurant)
+    if (this.restaurant) {
       this.mealsGroupedByType = this.restaurantService.
         getAllSelectedRestaurantMealsGroupedByType(this.restaurant)
     }
 
   }
-  navigate(id) {
-    this.router.navigate([""]);
+  addMeal(meal : Meal) {
+    this.cartService.meals.push(meal);
+    const newMeals = this.cartService.meals;
+    this.cartService.meals = newMeals;
+    console.log(this.cartService.meals)
   }
 
 
