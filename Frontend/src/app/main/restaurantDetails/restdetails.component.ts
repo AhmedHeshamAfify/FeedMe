@@ -12,21 +12,21 @@ import { Meal } from 'src/app/models/meal';
 
 })
 export class RestdetailsComponent implements OnInit {
-  restDetails : Restaurant = {
-    name: "McDonald's",
-    desc: "Rest 1 Desc",
-    cuisine: "Americain",
-    meals: [{ name: "meal1", type: "beef", price: "10 $" }, { name: "meal2", type: "vegan", price: "11$" }, { name: "meal3", type: "vegetarian", price: "12$" }
-      , { name: "meal4", type: "beef", price: "15$" }, { name: "meal5", type: "beef", price: "10$" }],
-    address: "1234 Some St San Francisco, CA 94102, US 1.800.123.4567",
-    phone: "641-334-8722",
-    image: "1"
-  }
+  // restDetails : Restaurant = {
+  //   name: "McDonald's",
+  //   desc: "Rest 1 Desc",
+  //   cuisine: "Americain",
+  //   meals: [{ name: "meal1", type: "beef", price: 11 }, { name: "meal2", type: "vegan", price: 10 }, { name: "meal3", type: "vegetarian", price: 11 }
+  //     , { name: "meal4", type: "beef", price: 15 }, { name: "meal5", type: "beef", price: 10 }],
+  //   address: "1234 Some St San Francisco, CA 94102, US 1.800.123.4567",
+  //   phone: "641-334-8722",
+  //   image: "1"
+  // }
   constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestaurantService, private cartService: CartService) { }
   mealsGroupedByType;
   restaurant: Restaurant
   ngOnInit() {
-    this.restaurant = this.restDetails
+    this.restaurant = history.state.data
     console.log(this.restaurant)
     if (this.restaurant) {
       this.mealsGroupedByType = this.restaurantService.

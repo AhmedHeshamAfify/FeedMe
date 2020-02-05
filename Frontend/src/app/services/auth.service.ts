@@ -32,10 +32,10 @@ export class AuthService {
 
   jwtHelper: JwtHelper = new JwtHelper()
 
-  RegisterUser(user): Observable<User> {
+  RegisterUser(user): Observable<any> {
     console.log(user);
     // debugger;
-    return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions) as Observable<User>;
+    return this.http.post('http://localhost:4000/Users/signUp', user, this.httpOptions);
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Meal } from 'src/app/models/meal';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,14 +10,15 @@ import { Meal } from 'src/app/models/meal';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService : CartService) { }
+  constructor(private router : Router ,private cartService : CartService) { }
   meals : Meal[];
   ngOnInit() {
     this.meals = this.cartService.meals
   }
 
-  proccedToPayment(){
+  proceedToPayment(){
     this.cartService.addOrder()
+    this.router.navigate(['payment'])
   }
 
 }
