@@ -4,8 +4,7 @@ import { RestaurantService } from '../../services/restaurantService';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Restaurant } from 'src/app/models/restaurant';
-import { AuthService } from 'src/app/services/auth.service';
-import { PersistenceService } from 'angular-persistence';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +12,7 @@ import { PersistenceService } from 'angular-persistence';
 })
 export class HomeComponent implements OnInit {
   restaurants : Observable<Restaurant>;
-  constructor(private router: Router, private restaurantService: RestaurantService) { }
+  constructor(private router: Router, private utilsService: UtilsService,  private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.getAllRestaurantByPosition();
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   navigate(restaurant) {
-    this.restaurantService.insertInCach('restaurant',restaurant)
+    this.utilsService.insertInCach('restaurant',restaurant)
     this.router.navigate(['rest']);
     
   }

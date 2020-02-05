@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { AfterViewInit, ViewChild, Renderer2 } from "@angular/core";
 import { User } from "../../models/user";
+import { PersistenceService } from 'angular-persistence';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: "app-login",
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private service: AuthService,
     private router: Router,
-    private rd: Renderer2
+    private rd: Renderer2,
+    private utilsService: UtilsService
   ) {
     this.createForm();
   }
@@ -51,8 +54,7 @@ export class LoginComponent implements OnInit {
       if (data != null) {
         localStorage.setItem("token", data.token);
         if (data.user) {
-          console.log(user)
-          this.service.user = data.user
+          this.utilsService.insertInCach('user', data.user)
           this.router.navigate(["home"]);
         }
       }
