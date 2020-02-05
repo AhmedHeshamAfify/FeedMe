@@ -53,12 +53,13 @@ export class LoginComponent implements OnInit {
         if (data.user) {
           console.log(user)
           this.service.user = data.user
+          this.router.navigate(["home"]);
         }
       }
     },
     error => {
       this.msg = "User not found";
     });
-    this.router.navigate(["home"]);
+    
   }
 }

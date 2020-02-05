@@ -8,11 +8,19 @@ import { PaymentCardComponent } from '../payment-card/payment-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { PaymentConfirmationComponent } from './../payment-confirmation/payment-confirmation.component';
-
+import { PersistenceModule } from 'angular-persistence';
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, RestdetailsComponent, PaymentCardComponent, PaymentConfirmationComponent, CartComponent],
+  declarations: [
+    MainComponent,
+    HomeComponent,
+    RestdetailsComponent,
+    PaymentCardComponent,
+    PaymentConfirmationComponent,
+    CartComponent
+    
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,

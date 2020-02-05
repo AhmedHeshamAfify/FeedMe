@@ -4,6 +4,8 @@ import { RestaurantService } from 'src/app/services/restaurantService';
 import { Restaurant } from 'src/app/models/restaurant';
 import { CartService } from 'src/app/services/cart.service';
 import { Meal } from 'src/app/models/meal';
+import { PersistenceService } from 'angular-persistence';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,25 +24,28 @@ export class RestdetailsComponent implements OnInit {
   //   phone: "641-334-8722",
   //   image: "1"
   // }
-  constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestaurantService, private cartService: CartService) { }
+  constructor(private restaurantService: RestaurantService, private presistance: PersistenceService, private toastr: ToastrService) { }
   mealsGroupedByType;
   restaurant: Restaurant
   ngOnInit() {
-    this.restaurant = history.state.data
-    console.log(this.restaurant)
+    this.restaurant = this.restaurantService.getFromCache('restaurant')
+    console.log("heeeeeeeeeeeeeeeeeeeeh", this.restaurant)
     if (this.restaurant) {
       this.mealsGroupedByType = this.restaurantService.
         getAllSelectedRestaurantMealsGroupedByType(this.restaurant)
     }
 
   }
-  addMeal(meal : Meal) {
-    this.cartService.meals.push(meal);
-    const newMeals = this.cartService.meals;
-    this.cartService.meals = newMeals;
-    console.log(this.cartService.meals)
+  addMeal(meal: Meal) {
+    let meals = this.restaurantService.getFromCache('meal');
+    let newMeals: Meal[] = [];
+    if (meals) {
+      newMeals = [...meals, meal];
+    } else {
+      newMeals = [meal]
+    }
+    this.restaurantService.insertInCach('meal', newMeals)
+    this.toastr.success(meal.name + " to your cart")
   }
-
-
-
 }
+

@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { PersistenceModule } from 'angular-persistence';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -21,8 +24,10 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
-
+    PersistenceModule,
     RouterModule.forRoot([
       { path: '', loadChildren: () => import('./main/main.module').then(r => r.MainModule), canActivate: [AuthGuard] },
       { path: '', loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule) },
