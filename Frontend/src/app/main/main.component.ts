@@ -12,7 +12,9 @@ export class MainComponent implements OnInit {
   user : User
   
   ngOnInit(): void {
+
     this.user = this.authService.user
+    console.log("asdasdasdasd",this.authService.user)
   }
 
   title = 'FeedMe';

@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
       if (data != null) {
         localStorage.setItem("token", data.token);
         if (data.user) {
+          console.log(user)
           this.service.user = data.user
         }
       }

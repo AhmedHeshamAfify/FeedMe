@@ -31,14 +31,14 @@
                             <div class="d-flex justify-content-between">
                                 <h5>Meal : {{meal.name}}</h5>
                             </div>
-                            <p class="pt-3">Price : {{meal.price}}</p>
+                            <p class="pt-3">Price : {{meal.price}} $</p>
                         </div>
                     </div>
                 </div>
             </div>
             <br/>
             <div *ngIf="meals.length > 0" class="col-lg-12">
-                <button class="btn btn-primary btn-lg" type="button"> Proceed To Payment</button>
+                <button (click)= "proceedToPayment()" class="btn btn-primary btn-lg" type="button"> Proceed To Payment</button>
             </div>
         </div>
 

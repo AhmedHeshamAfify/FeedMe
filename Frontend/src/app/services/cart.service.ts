@@ -8,12 +8,12 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class CartService {
-  meals: Meal[] = []
+  meals : Meal []= []
   constructor(private http: HttpClient, private authService: AuthService) { }
 
 
   addOrder() {
-    this.http.post('http://localhost:4000/addOrder', this.meals).subscribe((UpdatedUser: User) => {
+    this.http.post('http://localhost:4000/orders', {meals: this.meals}).subscribe((UpdatedUser: User) => {
       this.authService.user = UpdatedUser
     });
   }
