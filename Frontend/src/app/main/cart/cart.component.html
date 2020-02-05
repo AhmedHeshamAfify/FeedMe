@@ -18,9 +18,9 @@
                 </div>
             </div>
             <div class="container">
-                <h3 *ngIf="meals.length == 0"> Cart is Empty</h3>
+                <h3 *ngIf="meals?.length == 0"> Cart is Empty</h3>
             </div>
-            <div *ngIf="meals.length > 0" class="row">
+            <div *ngIf="meals?.length > 0" class="row">
                 <div *ngFor="let meal of meals" class="col-md-4 col-sm-6">
                     <div (click)="navigate(restaurant)">
                         <div class="food-img">

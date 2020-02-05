@@ -4,14 +4,14 @@ import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
 import { Restaurant } from '../models/restaurant';
+import { PersistenceService, StorageType } from 'angular-persistence';
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class RestaurantService {
-
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private presistance: PersistenceService) { }
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
@@ -19,9 +19,9 @@ export class RestaurantService {
 
     };
 
-    getAllSelectedRestaurantMealsGroupedByType(restaurant){
-        return this.groupByToMap(restaurant.meals,'type')
-        
+    getAllSelectedRestaurantMealsGroupedByType(restaurant) {
+        return this.groupByToMap(restaurant.meals, 'type')
+
     }
 
     groupByToMap(arr, prop) {
@@ -36,8 +36,21 @@ export class RestaurantService {
         return this.http.post('http://localhost:4000/rests/nearest', coords) as Observable<Restaurant>;
     }
 
-    getAllRestaurants() : Observable<Restaurant> {
-        return this.http.get('http://localhost:4000/rests' , this.httpOptions) as Observable<Restaurant>;
+    getAllRestaurants(): Observable<Restaurant> {
+        return this.http.get('http://localhost:4000/rests', this.httpOptions) as Observable<Restaurant>;
+    }
+
+    insertInCach(key, value) {
+        console.log(this.presistance)
+        return this.presistance.set(key, value, {type : StorageType.SESSION})
+    }
+
+    getFromCache(key) {
+        return this.presistance.get(key, StorageType.SESSION)
+    }
+
+    clearFromCache(key){
+        this.presistance.remove(key, StorageType.SESSION)
     }
 
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Restaurant } from 'src/app/models/restaurant';
 import { AuthService } from 'src/app/services/auth.service';
+import { PersistenceService } from 'angular-persistence';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getAllRestaurantByPosition();
   }
-  
-  sendit(data){
-    this.restaurants.pipe(filter(x=> x.name == data)).subscribe(console.log);
-  }
 
   getAllRestaurantByPosition(){
       navigator.geolocation.getCurrentPosition(resp => {
@@ -32,8 +29,9 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  navigate(restaurant) {     
-    this.router.navigate(['rest'],{state :{ data : restaurant}});
+  navigate(restaurant) {
+    this.restaurantService.insertInCach('restaurant',restaurant)
+    this.router.navigate(['rest']);
     
   }
 

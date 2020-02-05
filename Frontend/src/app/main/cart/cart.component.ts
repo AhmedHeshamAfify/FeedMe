@@ -13,11 +13,14 @@ export class CartComponent implements OnInit {
   constructor(private router : Router ,private cartService : CartService) { }
   meals : Meal[];
   ngOnInit() {
-    this.meals = this.cartService.meals
+    this.meals = this.cartService.getMealsFromCache();
+    if(!this.meals){
+      this.meals = []
+    }
   }
 
   proceedToPayment(){
-    this.cartService.addOrder()
+    this.cartService.addOrder(this.meals)
     this.router.navigate(['payment'])
   }
 
