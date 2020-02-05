@@ -11,7 +11,7 @@ import { PersistenceService, StorageType } from 'angular-persistence';
     providedIn: 'root'
 })
 export class RestaurantService {
-    constructor(private http: HttpClient, private presistance: PersistenceService) { }
+    constructor(private http: HttpClient) { }
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
@@ -40,17 +40,6 @@ export class RestaurantService {
         return this.http.get('http://localhost:4000/rests', this.httpOptions) as Observable<Restaurant>;
     }
 
-    insertInCach(key, value) {
-        console.log(this.presistance)
-        return this.presistance.set(key, value, {type : StorageType.SESSION})
-    }
-
-    getFromCache(key) {
-        return this.presistance.get(key, StorageType.SESSION)
-    }
-
-    clearFromCache(key){
-        this.presistance.remove(key, StorageType.SESSION)
-    }
+  
 
 }
