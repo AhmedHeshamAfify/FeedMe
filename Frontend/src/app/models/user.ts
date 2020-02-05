@@ -3,6 +3,6 @@ export class User {
   email: String;
   password: String;
   // payments : Object[];
-  orders : Object[];
+  orders : object[];
 
 }

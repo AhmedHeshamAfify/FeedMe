@@ -1,20 +1,21 @@
-const User = require('../models/Users')
+const User = require("../models/Users");
 
-function savePayment(orders,email) {
+function savePayment(order, email) {
+  console.log("orders from backend", order);
+  console.log("emailfrom backend", email);
 
-    // console.log(payment);
-    
-    console.log(email);
-    
-    // const user = User.find({ email:email })
-    const user = User.findOneAndUpdate({email:email},{$push:{"orders":orders}})
-    // const user2 = User.find({email:email});
-    
-    return user
+  const currentUser = User.findOneAndUpdate(
+    { email: email, orders: { $elemMatch: { orderNum: order.orderNum } } },
+    {
+      $set: {
+        "orders.$.address": order.address,
+        "orders.$.status": "paid",
+        "orders.$.payment": order.payment
+      }
+    }
+  );
 
+  return currentUser;
 }
 
-
-
-
-module.exports = { savePayment }
+module.exports = { savePayment };
