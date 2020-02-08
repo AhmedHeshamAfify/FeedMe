@@ -8,7 +8,6 @@ import { PaymentCardComponent } from '../payment-card/payment-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { PaymentConfirmationComponent } from './../payment-confirmation/payment-confirmation.component';
-import { PersistenceModule } from 'angular-persistence';
 
 
 @NgModule({
@@ -36,7 +35,7 @@ import { PersistenceModule } from 'angular-persistence';
           { path: 'confirmed', component: PaymentConfirmationComponent }
         ]
       }])
-  ]
+  ],
 })
 
 export class MainModule { }

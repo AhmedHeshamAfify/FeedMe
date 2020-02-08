@@ -30,7 +30,7 @@
 
               <!-- <show-hide-password size="lg" btnStyle="primary" [btnOutline]="false"> -->
 
-              <input type="text" id="password" class="fadeIn third" name="password" placeholder="password"
+              <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"
                 formControlName="password">
               <div *ngIf="submitted && angForm.controls['password'].errors?.required"> <span>Password is required</span>
               </div>
@@ -41,7 +41,7 @@
 
 
 
-              <input type="text" id="confirm" class="fadeIn third" name="confirmlogin" placeholder="confirmpassword"
+              <input type="password" id="confirm" class="fadeIn third" name="confirmlogin" placeholder="confirmpassword"
                 formControlName="confirmpassword">
               <div *ngIf="submitted && angForm.controls['confirmpassword'].errors?.required"> <span>ConfirmPassword is
                   required</span></div>

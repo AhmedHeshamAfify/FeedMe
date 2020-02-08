@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   getAllRestaurantByPosition(){
       navigator.geolocation.getCurrentPosition(resp => {
         const coords = [resp.coords.longitude, resp.coords.latitude];
+        console.log(coords)
         this.restaurants = this.restaurantService.getNearestResturants(coords)
         
       }, () => {

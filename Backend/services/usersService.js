@@ -11,7 +11,7 @@ function generateJWT(user) {
 
 function signUp(userName, email, password) {
     saveUser(userName, email, password)
-    return generateJWT(email)
+    return saveUser(userName, email, password)
 }
 
 async function signIn(email, password) {
@@ -19,7 +19,9 @@ async function signIn(email, password) {
 
     const user = await User.findOne({ "email": email });
     if (!user) {
+        console.log('not found')
         return false
+       
     }
     else {
         const hash = user.password

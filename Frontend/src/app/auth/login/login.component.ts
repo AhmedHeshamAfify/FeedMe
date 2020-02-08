@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       email: this.angForm.value.email,
       password: this.angForm.value.password
     };
+    console.log(user)
     this.service.LoginUser(user).subscribe(data => {
       console.log(">>> login response: ", data.token);
       if (data != null) {
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
       }
     },
     error => {
+      console.log(error)
       this.msg = "User not found";
     });
     

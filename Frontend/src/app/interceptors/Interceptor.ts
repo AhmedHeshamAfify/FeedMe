@@ -11,6 +11,7 @@ export class Interceptor implements HttpInterceptor {
             setHeaders : { Authorization : "Bearer "+ localStorage.getItem('token')}
         });
 
+
         console.log("Before making api call : ", updatedRequest);
         return next.handle(updatedRequest)
     }

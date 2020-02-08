@@ -9,7 +9,6 @@ const auth = (req, res, next) => {
             error.code = 401
             next(error)
         }
-        console.log(authData)
         req.userData = authData
         next()
     })

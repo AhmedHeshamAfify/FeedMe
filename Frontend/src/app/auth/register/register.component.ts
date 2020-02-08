@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { uniqueUsernameValidator } from "../../shared/unique-username-validator.directive";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-register",
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   angForm: FormGroup;
   submitted = false;
   // @Input() user = {username:'' , email:'' , password: ''};
-  constructor(private fb: FormBuilder, private service: AuthService) {
+  constructor(private fb: FormBuilder, private service: AuthService, private router: Router) {
     this.createForm();
   }
 
@@ -46,7 +47,7 @@ export class RegisterComponent implements OnInit {
         userName: [
           "",
           Validators.required, // sync validator
-          uniqueUsernameValidator(this.service) //async validator
+        //  uniqueUsernameValidator(this.service) //async validator
         ],
         email: ["", [Validators.required, Validators.email]],
         password: ["", [Validators.required, Validators.minLength(6)]],
@@ -59,7 +60,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.submitted = true;
     this.service.RegisterUser(this.angForm.value).subscribe(data => {
-      localStorage.setItem("token", data.token);
+     this.router.navigate(['/login']);
     });
   }
 }

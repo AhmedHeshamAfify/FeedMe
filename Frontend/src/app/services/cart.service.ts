@@ -19,8 +19,9 @@ export class CartService implements OnDestroy {
     return this.utilsService.getFromCache('meal') 
   }
   addOrder(meals) {
-   this.subs = this.http.post('http://localhost:4000/orders', {meals: meals}).subscribe((UpdatedUser: User) => {
-      this.utilsService.updateCache('user', UpdatedUser)
+   this.subs = this.http.post('http://localhost:4000/orders', {meals: meals}).subscribe((updatedUser: User) => {
+      console.log("howa daaaaaaaaah",updatedUser)
+      this.utilsService.updateCache('user', updatedUser)
     });
   }
 

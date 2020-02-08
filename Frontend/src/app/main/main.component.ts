@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.utilsService.getFromCache('user')
+    console.log(this.user)
   }
 
   logout() {

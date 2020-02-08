@@ -2,23 +2,18 @@ const User = require('../models/Users')
 
 async function saveOrder(email, meals) {
     try {
-
-        const user = await User.findOne({ email: email });
-
-        const lastOrderNum = user.orders.length;
         let orderTotalPrice = 0;
         for (meal of meals) {
             orderTotalPrice += meal.price;
         }
         order = {
             status: "pending",
-            orderNum: lastOrderNum + 1,
+            orderNum: Date.now(),
             totalPrice: orderTotalPrice,
             meals: meals
         }
 
-        const myUser = await User.findOneAndUpdate({ email: email }, { $push: { "orders": order } })
-
+        const myUser = await User.findOneAndUpdate({ email: email }, { $push: { "orders": order } }, {new: true})
 
         return myUser;
 

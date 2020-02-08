@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   LoginUser(user): Observable<any> {
-    return this.http.post('http://localhost:4000/Users/signIn', user);
+    return this.http.post('http://localhost:4000/users/signIn', user, this.httpOptions);
   }
 
 

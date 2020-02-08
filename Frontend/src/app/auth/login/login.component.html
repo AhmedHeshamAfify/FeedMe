@@ -21,7 +21,7 @@
             <div *ngIf="msg"><label class="validation">{{msg}}</label>
             </div>
 
-            <input type="text" id="password" class="fadeIn third" placeholder="password" formControlName="password">
+            <input type="password" id="password" class="fadeIn third" placeholder="password" formControlName="password">
             <div *ngIf="submitted && angForm.controls['password'].errors?.required"> <label class="validation"> Password
                 is required. </label></div>
 
